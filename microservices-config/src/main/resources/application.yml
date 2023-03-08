@@ -1,0 +1,21 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: microservices-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/honeylovebaby/springcloudconfig.git
+          default-label: main  #默认请求的使master分支
+#将config注册进Erueka server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    prefer-ip-address: true
+logging:
+  level:
+    org.springframework.cloud: 'DEBUG'

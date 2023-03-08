@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:12000 #连接服务端config地址
+      name: movie #获取具体的服务名
+      profile: dev #获取具体服务的哪个环境
+      label: main #获取仓库分支

@@ -1,0 +1,30 @@
+server:
+  port: 5001
+spring:
+  application:
+    name: microservices-gateway
+  zipkin:
+    base-url: http://localhost:9041
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      percentage: 1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    ip-address: true
+#zuul的动态配置网关，如果path和serviceId一直，可以不配
+zuul:
+  routes:
+    microservices-user:
+      path: /microservices-user/**
+      serviceId: microservices-user
+    microservices-movie:
+      path: /microservices-movie/**
+      serviceId: microservices-movie
+  SendErrorFilter:
+    error:
+      disable: true

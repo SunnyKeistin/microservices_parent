@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    config:
+      #uri: http://localhost:12000 #连接服务端config地址
+      name: user #获取具体的服务名
+      profile: dev #获取具体服务的哪个环境
+      label: main #获取仓库分支
+      discovery:
+        enabled: true #通过服务发现从Eureka server获取config，实现高可用架构
+        service-id: microservices-config
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    prefer-ip-address: true
